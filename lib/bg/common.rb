@@ -7,6 +7,7 @@ module BG
       def load!
         if rails?
           register_railtie
+          register_engine
         end
       end
 
@@ -23,6 +24,10 @@ module BG
       # Paths
       def gem_path
         @gem_path ||= File.expand_path '../..', File.dirname(__FILE__)
+      end
+
+      def active_job?
+        defined?(::ActiveJob::Base)
       end
 
       def rails?
