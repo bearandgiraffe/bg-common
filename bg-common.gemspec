@@ -5,7 +5,7 @@ require 'bg/common/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "bg-common"
-  spec.version       = Bg::Common::VERSION
+  spec.version       = BG::Common::VERSION
   spec.authors       = ["Youssef Chaker"]
   spec.email         = ["youssef@bearandgiraffe.com"]
 

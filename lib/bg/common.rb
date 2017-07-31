@@ -1,7 +1,41 @@
-require "bg/common/version"
+require 'bg/common/version'
+require 'bg/common/middlewares/basic_auth'
 
-module Bg
+module BG
   module Common
-    # Your code goes here...
+    class << self
+      def load!
+        if rails?
+          register_railtie
+        end
+      end
+
+      def logger
+        # TODO: Make this configurable
+        @logger ||= Logging.logger['bg_common']
+        @logger.level = :debug
+
+        @logger.add_appenders \
+          Logging.appenders.stdout,
+          Logging.appenders.file('log/bg_common.log')
+      end
+
+      # Paths
+      def gem_path
+        @gem_path ||= File.expand_path '../..', File.dirname(__FILE__)
+      end
+
+      def rails?
+        defined?(::Rails)
+      end
+
+      private
+
+      def register_railtie
+        require 'bg/common/rails'
+      end
+    end
   end
 end
+
+BG::Common.load!
