@@ -39,6 +39,10 @@ module BG
       def register_railtie
         require 'bg/common/rails'
       end
+
+      def register_engine
+        require 'bg/common/engine'
+      end
     end
   end
 end

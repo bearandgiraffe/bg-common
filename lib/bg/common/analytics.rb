@@ -7,6 +7,7 @@ module BG
         def load!
           load_ga       if ga?
           load_intercom if intercom?
+          load_keen     if keen?
         end
 
         def ga?
@@ -17,6 +18,10 @@ module BG
           defined?(::Intercom)
         end
 
+        def keen?
+          defined?(::Keen)
+        end
+
         private
 
         def load_ga
@@ -25,6 +30,10 @@ module BG
 
         def load_intercom
           require_relative 'analytics/intercom'
+        end
+
+        def load_keen
+          require_relative 'analytics/keen'
         end
       end
     end

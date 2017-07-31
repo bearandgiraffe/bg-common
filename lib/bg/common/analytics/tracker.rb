@@ -14,6 +14,10 @@ module BG
           if Analytics.intercom? and @data[:intercom]
             Intercom.create_event @data[:intercom]
           end
+
+          if Analytics.keen? and @data[:keen]
+            Keen.create_event @data[:keen][:event], @data[:keen][:data]
+          end
         end
       end
     end
