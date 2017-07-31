@@ -2,6 +2,18 @@
 
 A Ruby library of common behaviors, especially for Ruby on Rails applications.
 
+# Table of Contents
+
+<!-- MarkdownTOC depth=4 autolink=true bracket=round -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [I. Basic Auth](#i-basic-auth)
+- [Development](#development)
+- [Contributing](#contributing)
+
+<!-- /MarkdownTOC -->
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,7 +32,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### I. Basic Auth
+
+To hide an app from bots and people who are trying to troll us, we want to hide the app behind a "firewall". Typically we want to do that for staging or any other environment that is not public.
+
+The best way to do that is to put the app behind Basic Auth.
+
+To enable Basic Auth, add the following as an ENV variable:
+
+```
+BASIC_AUTH_ENABLED=true
+BASIC_AUTH_USERNAME=user
+BASIC_AUTH_PASSWORD=password
+```
+
+make sure to change `user` and `password` to something a bit more secure!
+
 
 ## Development
 
