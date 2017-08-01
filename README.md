@@ -142,7 +142,7 @@ MyAnalytics.new.track_login user
 
 or if you want to build something more extendable:
 
-```
+```ruby
 # lib/my_app/analytics/base.rb
 module MyApp
   module Analytics
