@@ -19,7 +19,7 @@ module BG
         end
 
         def keen?
-          defined?(::Keen)
+          defined?(::Keen) && ENV['KEEN_PROJECT_ID']
         end
 
         private
