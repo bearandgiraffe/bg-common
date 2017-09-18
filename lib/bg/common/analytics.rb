@@ -15,7 +15,7 @@ module BG
         end
 
         def intercom?
-          defined?(::Intercom)
+          defined?(::Intercom) && ENV['INTERCOM_ACCESS_TOKEN']
         end
 
         def keen?

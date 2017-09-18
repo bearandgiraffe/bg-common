@@ -4,11 +4,11 @@ module BG
       module Intercom
         class Client
           def initialize
-            @intercom = ::Intercom::Client.new
+            @intercom = ::Intercom::Client.new token: ENV['INTERCOM_ACCESS_TOKEN']
           end
 
           def intercom
-            @intercom ||= ::Intercom::Client.new
+            @intercom ||= ::Intercom::Client.new token: ENV['INTERCOM_ACCESS_TOKEN']
           end
 
           def call data
