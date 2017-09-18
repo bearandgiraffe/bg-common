@@ -4,11 +4,11 @@ module BG
       module Intercom
         class Client
           def initialize
-            @intercom = ::Intercom::Client.new(app_id: config.app_id, api_key: config.api_key)
+            @intercom = ::Intercom::Client.new
           end
 
           def intercom
-            @intercom ||= ::Intercom::Client.new(app_id: config.app_id, api_key: config.api_key)
+            @intercom ||= ::Intercom::Client.new
           end
 
           def call data
