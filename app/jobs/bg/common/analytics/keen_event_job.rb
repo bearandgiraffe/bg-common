@@ -5,7 +5,7 @@ module BG
         queue_as :analytics
 
         def perform event, data
-          Keen::Client.new.call event, data
+          BG::Common::Analytics::Keen::Client.call event, data
         end
       end
     end

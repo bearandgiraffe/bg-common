@@ -5,7 +5,7 @@ module BG
         queue_as :analytics
 
         def perform data
-          Intercom::Client.new.make_intercom_call do |client|
+          BG::Common::Analytics::Intercom::Client.new.make_intercom_call do |client|
             client.users.create data
           end
         end

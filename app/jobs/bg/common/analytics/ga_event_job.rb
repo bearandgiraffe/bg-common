@@ -5,7 +5,7 @@ module BG
         queue_as :analytics
 
         def perform data
-          GA::Client.new.call data
+          BG::Common::Analytics::GA::Client.call data
         end
       end
     end

@@ -19,9 +19,9 @@ module BG
           #
           def create_event event, data
             if BG::Common.active_job?
-              KeenEventJob.perform_later event, data
+              BG::Common::Analytics::KeenEventJob.perform_later event, data
             else
-              Client.new.call event, data
+              BG::Common::Analytics::Keen::Client.call event, data
             end
           end
         end

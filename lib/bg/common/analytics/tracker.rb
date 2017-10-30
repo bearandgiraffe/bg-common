@@ -5,6 +5,10 @@ module BG
         def initialize
         end
 
+        def self.call data
+          self.new.call data
+        end
+
         def call data
           if Analytics.ga? and data[:ga]
             GA.create_event data[:ga]

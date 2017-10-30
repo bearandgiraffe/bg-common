@@ -6,6 +6,10 @@ module BG
           def initialize
           end
 
+          def self.call event, data = {}
+            self.new.call event, data
+          end
+
           def call event, data = {}
             ::Keen.publish event.to_sym, data
           end

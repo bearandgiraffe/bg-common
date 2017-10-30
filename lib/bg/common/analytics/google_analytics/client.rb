@@ -11,6 +11,10 @@ module BG
             @ga ||= ::Gabba::Gabba.new(ENV['GA_TRACKER_CODE'], ENV['GA_DOMAIN'])
           end
 
+          def self.call data
+            self.new.call data
+          end
+
           def call data
             ga.event(
               data[:category],

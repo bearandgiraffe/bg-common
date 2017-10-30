@@ -8,7 +8,7 @@ module BG
           users = User.all
 
           users.each do |user|
-            Analytics::Intercom.update_user user
+            BG::Common::Analytics::Intercom.update_user user
           end unless users.blank?
         end
       end

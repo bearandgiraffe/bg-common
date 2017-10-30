@@ -5,7 +5,7 @@ module BG
         queue_as :analytics
 
         def perform data
-          Intercom::Client.new.call data
+          BG::Common::Analytics::Intercom::Client.call data
         end
       end
     end

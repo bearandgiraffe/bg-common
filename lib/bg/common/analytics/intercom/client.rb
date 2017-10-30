@@ -11,6 +11,10 @@ module BG
             @intercom ||= ::Intercom::Client.new token: ENV['INTERCOM_ACCESS_TOKEN']
           end
 
+          def self.call data
+            self.new.call data
+          end
+
           def call data
             make_intercom_call do |client|
               client.events.create data
