@@ -13,17 +13,26 @@ module BG
 
       def logger
         # TODO: Make this configurable
-        @logger ||= Logging.logger['bg_common']
-        @logger.level = :debug
+        if defined?(::Logging)
+          @logger ||= ::Logging.logger['bg_common']
+          @logger.level = :debug
 
-        @logger.add_appenders \
-          Logging.appenders.stdout,
-          Logging.appenders.file('log/bg_common.log')
+          @logger.add_appenders \
+            ::Logging.appenders.stdout,
+            ::Logging.appenders.file('log/bg_common.log')
+        else
+          require 'logger'
+
+          @logger ||= ::Logger.new(STDOUT)
+          @logger.level = ::Logger::DEBUG
+        end
+
+        return @logger
       end
 
       # Paths
       def gem_path
-        @gem_path ||= File.expand_path '../..', File.dirname(__FILE__)
+        @gem_path ||= ::File.expand_path '../..', ::File.dirname(__FILE__)
       end
 
       def active_job?

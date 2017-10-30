@@ -26,7 +26,7 @@ module BG
             if BG::Common.active_job?
               IntercomEventJob.perform_later data
             else
-              Client.new.call data
+              BG::Common::Analytics::Intercom::Client.new.call data
             end
           end
         end

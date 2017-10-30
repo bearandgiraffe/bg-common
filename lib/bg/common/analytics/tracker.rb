@@ -10,16 +10,16 @@ module BG
         end
 
         def call data
-          if Analytics.ga? and data[:ga]
-            GA.create_event data[:ga]
+          if BG::Common::Analytics.ga? and data[:ga]
+            BG::Common::Analytics::GA.create_event data[:ga]
           end
 
-          if Analytics.intercom? and data[:intercom]
-            Intercom.create_event data[:intercom]
+          if BG::Common::Analytics.intercom? and data[:intercom]
+            BG::Common::Analytics::Intercom.create_event data[:intercom]
           end
 
-          if Analytics.keen? and data[:keen]
-            Keen.create_event data[:keen][:event], data[:keen][:data]
+          if BG::Common::Analytics.keen? and data[:keen]
+            BG::Common::Analytics::Keen.create_event data[:keen][:event], data[:keen][:data]
           end
         end
       end

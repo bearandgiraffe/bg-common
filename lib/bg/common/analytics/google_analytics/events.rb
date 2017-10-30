@@ -29,7 +29,7 @@ module BG
             if BG::Common.active_job?
               GAEventJob.perform_later data
             else
-              Client.new.call data
+              BG::Common::Analytics::GA::Client.new.call data
             end
           end
         end

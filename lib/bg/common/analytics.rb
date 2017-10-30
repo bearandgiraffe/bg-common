@@ -11,15 +11,36 @@ module BG
         end
 
         def ga?
-          defined?(::Gabba) && ENV['GA_TRACKER_CODE'] && ENV['GA_DOMAIN']
+          begin
+            require 'gabba'
+            defined?(::Gabba) && ENV['GA_TRACKER_CODE'] && ENV['GA_DOMAIN']
+          rescue LoadError
+            BG::Common.logger.info 'GA is not loaded'
+
+            return false
+          end
         end
 
         def intercom?
-          defined?(::Intercom) && ENV['INTERCOM_ACCESS_TOKEN']
+          begin
+            require 'intercom'
+            defined?(::Intercom) && ENV['INTERCOM_ACCESS_TOKEN']
+          rescue LoadError
+            BG::Common.logger.info 'Intercom is not loaded'
+
+            return false
+          end
         end
 
         def keen?
-          defined?(::Keen) && ENV['KEEN_PROJECT_ID']
+          begin
+            require 'keen'
+            defined?(::Keen) && ENV['KEEN_PROJECT_ID']
+          rescue LoadError
+            BG::Common.logger.info 'Keen is not loaded'
+
+            return false
+          end
         end
 
         private

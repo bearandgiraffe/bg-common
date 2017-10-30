@@ -1,3 +1,5 @@
+require 'bg/common/analytics'
+
 module BG
   module Common
     module Analytics
