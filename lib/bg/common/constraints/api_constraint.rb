@@ -1,4 +1,4 @@
-module Bg
+module BG
   module Common
     module Constraints
       class ApiConstraint
